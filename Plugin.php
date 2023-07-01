@@ -1,4 +1,26 @@
 <?php
+if (!defined('__TYPECHO_ROOT_DIR__')) {
+    exit;
+}
+
+$this_plugin_name = 'CSZSitemap';
+if (basename(dirname(__FILE__)) != $this_plugin_name) {
+    $now_dir  = dirname(__FILE__);
+    $dir_name = basename($now_dir);
+    $tar_dir  = __TYPECHO_ROOT_DIR__ . '/' . __TYPECHO_PLUGIN_DIR__ . '/' . $this_plugin_name;
+    if (file_exists($tar_dir)) {
+        echo '请把本插件目录名修改为：' . $this_plugin_name . '，现在的目录名为：' . $dir_name;
+        exit();
+    }
+    if (rename($now_dir, $tar_dir)) {
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $url = str_replace($dir_name, $this_plugin_name, $url);
+        header('Location: ' . $url);
+    } else {
+        echo '请把本插件目录名修改为：' . $this_plugin_name . '，现在的目录名为：' . $dir_name;
+    }
+    exit();
+}
 /**
  * Sitemap站点地图
  * 
