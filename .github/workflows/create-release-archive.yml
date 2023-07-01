@@ -1,0 +1,29 @@
+name: Create Release Archive
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          # Exclude ".github/workflows" directory
+          exclude: .github/workflows
+
+      - name: Create archive
+        run: |
+          mkdir CSZSitemap
+          cp -r * CSZSitemap/
+          zip -r CSZSitemap.zip CSZSitemap
+        shell: bash
+
+      - name: Upload archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: Release Archive
+          path: CSZSitemap.zip
