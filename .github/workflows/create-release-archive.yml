@@ -12,10 +12,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Download source code
-      run: git archive --format zip --output CSZSitemap.zip HEAD
+      run: git archive --format zip --output temp.zip HEAD
 
     - name: Unzip source code
-      run: unzip CSZSitemap.zip
+      run: unzip temp.zip
+
+    - name: New Dir
+      run: mkdir CSZSitemap
 
     - name: Rename folder
       run: mv typecho-sitemap CSZSitemap
