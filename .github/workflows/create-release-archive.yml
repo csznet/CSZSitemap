@@ -12,11 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          # Exclude ".github/workflows" directory
-          exclude: .github/workflows
+          path: 'source'
+          
+      - name: Exclude directory
+        run: |
+          mv source/.github/workflows source/.github/workflows_tmp
+        shell: bash
 
       - name: Create archive
         run: |
+          cd source
           mkdir CSZSitemap
           cp -r * CSZSitemap/
           zip -r CSZSitemap.zip CSZSitemap
@@ -26,4 +31,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Release Archive
-          path: CSZSitemap.zip
+          path: source/CSZSitemap.zip
+
+      - name: Restore directory
+        run: |
+          mv source/.github/workflows_tmp source/.github/workflows
+        shell: bash
