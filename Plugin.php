@@ -4,13 +4,8 @@
  * 
  * @package CSZSitemap
  * @author Milkcu && CSZ
- * @version 0.5
+ * @version 0.1
  * @link http://www.csz.net
- *
- * 历史版本
- * version 0.5 at 2014-07-25
- * Sitemap for Baidu
- * 生成文章和页面的Sitemap
  *
  */
 class CSZSitemap_Plugin implements Typecho_Plugin_Interface
