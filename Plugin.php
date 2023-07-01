@@ -3,7 +3,7 @@
  * Sitemap站点地图
  * 
  * @package CSZSitemap
- * @author Milkcu && CSZ
+ * @author Milkcu & CSZ
  * @version 0.1
  * @link http://www.csz.net
  *
