@@ -17,9 +17,6 @@ jobs:
     - name: Unzip source code
       run: unzip temp.zip
 
-    - name: New Dir
-      run: mkdir CSZSitemap
-
     - name: Rename folder
       run: mv typecho-sitemap CSZSitemap
 
