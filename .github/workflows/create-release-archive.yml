@@ -22,8 +22,8 @@ jobs:
       - name: Create archive
         run: |
           cd source
-          mkdir CSZSitemap
-          cp -r * CSZSitemap/
+          mkdir -p CSZSitemap
+          cp -r !(CSZSitemap) CSZSitemap/
           zip -r CSZSitemap.zip CSZSitemap
         shell: bash
 
