@@ -20,6 +20,12 @@ jobs:
     - name: Rename folder
       run: mv typecho-sitemap CSZSitemap
 
+    - name: Copy files to temporary folder
+      run: |
+        mkdir temp
+        cp -r $(ls -A | grep -v '^CSZSitemap$' | grep -v '^temp$') temp/
+        mv temp/* CSZSitemap/
+
     - name: Zip folder
       run: zip -r CSZSitemap.zip CSZSitemap
 
